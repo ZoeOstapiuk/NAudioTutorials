@@ -1,0 +1,26 @@
+﻿<Window x:Class="NAudioTutorial.NoiseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Audio" Height="300" Width="400" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="1" x:Name="btnMakeNoise" Content="GO" Margin="15" Template="{StaticResource NoiseSoundButton}" Width="50" Height="50" Click="btnMakeNoise_Click"/>
+        <Button Grid.Column="2" x:Name="btnStopNoise" Content="STOP" Margin="15" Template="{StaticResource NoiseSoundButton}" Width="50" Height="50" Click="btnStopNoise_Click"/>
+        <StackPanel Orientation="Horizontal">
+            <DockPanel LastChildFill="True">
+                <Label DockPanel.Dock="Top" Content="Frequency" />
+                <Label DockPanel.Dock="Bottom" Content="{Binding ElementName=sldFreq, Path=Value}" HorizontalAlignment="Center" />
+                <Slider x:Name="sldFreq" Orientation="Vertical" Margin="20, 5, 20, 0" Minimum="1" Maximum="10000" Value="1000" ValueChanged="sldFreq_ValueChanged" IsSnapToTickEnabled="True" TickFrequency="1"/>
+            </DockPanel>
+            <DockPanel LastChildFill="True">
+                <Label DockPanel.Dock="Top" Content="Amplitude" />
+                <Label DockPanel.Dock="Bottom" Content="{Binding ElementName=sldAmpl, Path=Value}" HorizontalAlignment="Center" />
+                <Slider x:Name="sldAmpl" Orientation="Vertical" Margin="20, 5, 20, 0" Height="200" Minimum="0.1" Maximum="1" Value="0.1" ValueChanged="sldAmpl_ValueChanged" IsSnapToTickEnabled="True" TickFrequency="0.05"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>
